@@ -88,7 +88,7 @@ int rojo3  = 0;
 int rojo4  = 0;
 int rojo5  = 0;
 int rojo6  = 0;
-int lider1 = 0;
+int lider1 = 1;
 int lider2 = 0;
 int x1;
 int x2;
@@ -136,6 +136,15 @@ int x43;
 int x44;
 int x45;
 int x46;
+int LIMPIEZA = 15;
+int POSICION = 0;
+int POSICIONX=0;
+int POSICIONY=0;
+int REMOVE =1;
+int ATAQUE = 0;
+int LIDER1X = 0;
+int LIDER1Y = 0;
+
 //***************************************************************************************************************************************
 // Functions Prototypes
 //***************************************************************************************************************************************
@@ -216,6 +225,7 @@ void loop() {
     animacion++;
     int anim1 = (animacion/10)%6;
     int anim2 = (animacion/20)%6; 
+    
    
   if(z==0){
     
@@ -254,6 +264,7 @@ void loop() {
 if (buttonState1 == LOW) {     
     // turn LED on:   
     x = x-1;
+    lider1=0;
     delay(15);
     
     digitalWrite(ledPinBLUE, HIGH); 
@@ -264,6 +275,7 @@ buttonState2 = digitalRead(buttonPin2);
 if (buttonState2 == LOW) {     
     // turn LED on:   
     x = x+1;
+    lider1= 1;
     delay(15);
     
     digitalWrite(ledPinGREEN, HIGH); 
@@ -281,12 +293,34 @@ if (buttonState2 == LOW) {
     //V_line( x -1, 100, 20, 0x421b);
     //FillRect(y+128, 65, 3, 10, 0x421b);
 
-if(lider1 == 1){
+if(lider1 == 1 & LIMPIEZA == 15 & ATAQUE == 0){
+  
     LCD_Bitmap(y+130, 65, 11, 11, YELLOW);
+    POSICION = y+130;
+    POSICIONX = y+130;
+    POSICIONY = 65;
 }
-if(lider1 == 0){
-    LCD_Bitmap(20, 20, 12, 8, MUERTITO);
-}
+
+  
+   
+  
+
+if(lider1 == 0 & LIMPIEZA != 0){
+  LIMPIEZA--;
+      LCD_Sprite(POSICION, 65, 11, 11, REDBUGDEAD,4, anim1, 0, 0);
+      
+  }
+  if(lider1 == 0 & LIMPIEZA == 0){
+    if(REMOVE == 1){
+    FillRect(POSICION,65,11,11,0x00);
+    REMOVE = 0;
+    }
+    FillRect(y+130, 65, 10, 11, 0x00);
+  }
+    
+    
+    
+
     
     LCD_Bitmap(y+190, 65, 11, 11, YELLOW);
   //  LCD_Bitmap(20, 20, 12, 8, MUERTITO);
