@@ -142,8 +142,7 @@ int POSICIONX=0;
 int POSICIONY=0;
 int REMOVE =1;
 int ATAQUE = 0;
-int LIDER1X = 0;
-int LIDER1Y = 0;
+int CONTADOR=0;
 
 //***************************************************************************************************************************************
 // Functions Prototypes
@@ -276,6 +275,7 @@ if (buttonState2 == LOW) {
     // turn LED on:   
     x = x+1;
     lider1= 1;
+    ATAQUE = 1;
     delay(15);
     
     digitalWrite(ledPinGREEN, HIGH); 
@@ -301,7 +301,89 @@ if(lider1 == 1 & LIMPIEZA == 15 & ATAQUE == 0){
     POSICIONY = 65;
 }
 
+if(lider1 == 1 & LIMPIEZA == 15 & ATAQUE == 1 ){
+
+if(CONTADOR == 0){
+
+if(POSICIONX!= 40){
+  POSICIONX = POSICIONX - 1;
+}
+if(POSICIONY!= 30){
+  POSICIONY= POSICIONY-1;
+}
   
+   LCD_Bitmap(POSICIONX, POSICIONY, 11, 11, YELLOW);
+   if(POSICIONX == 40 & POSICIONY == 30){
+    CONTADOR = 1;
+   }
+}
+
+if(CONTADOR == 1){
+
+ if(POSICIONX!= 20){
+  POSICIONX = POSICIONX - 1;
+}
+if(POSICIONY!= 120){
+  POSICIONY= POSICIONY+1;
+}
+   LCD_Bitmap(POSICIONX, POSICIONY, 11, 11, YELLOW);
+   if(POSICIONY == 120 & POSICIONX == 20){
+    CONTADOR = 2;
+   }
+}
+
+if(CONTADOR == 2){
+
+  if(POSICIONX!= 250){
+  POSICIONX = POSICIONX + 1;
+}
+if(POSICIONY!= 160){
+  POSICIONY= POSICIONY+1;
+}
+   LCD_Bitmap(POSICIONX, POSICIONY, 11, 11, YELLOW);
+   if(POSICIONX == 250 & POSICIONY == 160){
+    CONTADOR = 3;
+   }
+}
+
+if(CONTADOR == 3){
+if(POSICIONY != 70){
+  POSICIONY = POSICIONY - 1;
+}
+if(POSICIONX != 290){
+  POSICIONX = POSICIONX +1;
+}
+   LCD_Bitmap(POSICIONX, POSICIONY, 11, 11, YELLOW);
+   if(POSICIONY == 70 & POSICIONX == 290){
+    CONTADOR = 4;
+   }
+}
+
+if(CONTADOR == 4){
+
+if(POSICIONX != POSICION){
+  POSICIONX = POSICIONX-1;
+}
+if(POSICIONY != 40){
+  POSICIONY = POSICIONY-1;
+}
+
+   LCD_Bitmap(POSICIONX, POSICIONY, 11, 11, YELLOW);
+   if(POSICIONX == POSICION & POSICIONY == 40 ){
+    CONTADOR = 5;
+   }
+}
+  if(CONTADOR == 5){
+
+  POSICIONY = POSICIONY + 1;
+   LCD_Bitmap(y+130, POSICIONY, 11, 11, YELLOW);
+   if(POSICIONY == 65){
+    CONTADOR = 0;
+    ATAQUE = 0;
+   }
+}
+  
+}
    
   
 
