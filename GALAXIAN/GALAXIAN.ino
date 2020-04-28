@@ -33,115 +33,47 @@
 #define LCD_RD PE_1
 File myFile;
 int DPINS[] = {PB_0, PB_1, PB_2, PB_3, PB_4, PB_5, PB_6, PB_7};  
+//*********************************************************************************
 const int buttonPin1 = PUSH1;     // the number of the pushbutton pin
 const int ledPinBLUE =  BLUE_LED;      // the number of the LED pin
 int buttonState1 = 0;
 const int buttonPin2 = PUSH2;     // the number of the pushbutton pin
 const int ledPinGREEN =  GREEN_LED;      // the number of the LED pin
 int buttonState2 = 0;
-int x = 90;
+//*********************************************************************************
+int x = 90;   // ubicacion jugador 
+//**********************************************************
 int y = 0;
-int z = 1;
+int z = 1;      //tiempos
 int z2 = 0;
-int animacion=0;
-int azul1 = 0;
-int azul2 = 0;
-int azul3 = 0;
-int azul4 = 0;
-int azul5 = 0;
-int azul6 = 0;
-int azul7 = 0;
-int azul8 = 0;
-int azul9 = 0;
-int azul10 = 0;
-int azul11 = 0;
-int azul12 = 0;
-int azul13 = 0;
-int azul14 = 0;
-int azul15 = 0;
-int azul16 = 0;
-int azul17 = 0;
-int azul18 = 0;
-int azul19 = 0;
-int azul20 = 0;
-int azul21 = 0;
-int azul22 = 0;
-int azul23 = 0;
-int azul24 = 0;
-int azul25 = 0;
-int azul26 = 0;
-int azul27 = 0;
-int azul28 = 0;
-int azul29 = 0;
-int azul30 = 0;
-int morado1= 0;
-int morado2= 0;
-int morado3= 0;
-int morado4= 0;
-int morado5= 0;
-int morado6= 0;
-int morado7= 0;
-int morado8= 0;
-int rojo1  = 0;
-int rojo2  = 0;
-int rojo3  = 0;
-int rojo4  = 0;
-int rojo5  = 0;
-int rojo6  = 0;
+//******************************************
+int animacion=0;    
+int anim1;          //animacion 
+int anim2;
+//*******************************************
+ int PX1; int PX2; int PX3;int PX4;int PX5;int PX6;int PX7;int PX8;int PX9;int PX10;int PX11;int PX12;int PX13;int PX14;int PX15;int PX16;int PX17;int PX18;int PX19;int PX20;int PX21;int PX22;int PX23;int PX24;int PX25;int PX26;int PX27;int PX28;int PX29;int PX30;int PX31;int PX32;int PX33;int PX34;int PX35;int PX36;int PX37;int PX38;int PX39;int PX40;int PX41;int PX42;int PX43;int PX44;int PX45;int PX46;
+ int P1; int P2; int P3;int P4;int P5;int P6;int P7;int P8;int P9;int P10;int P11;int P12;int P13;int P14;int P15;int P16;int P17;int P18;int P19;int P20;int P21;int P22;int P23;int P24;int P25;int P26;int P27;int P28;int P29;int P30;int P31;int P32;int P33;int P34;int P35;int P36;int P37;int P38;int P39;int P40;int P41;int P42;int P43;int P44;int P45;int P46;
+ int PY1; int PY2; int PY3;int PY4;int PY5;int PY6;int PY7;int PY8;int PY9;int PY10;int PY11;int PY12;int PY13;int PY14;int PY15;int PY16;int PY17;int PY18;int PY19;int PY20;int PY21;int PY22;int PY23;int PY24;int PY25;int PY26;int PY27;int PY28;int PY29;int PY30;int PY31;int PY32;int PY33;int PY34;int PY35;int PY36;int PY37;int PY38;int PY39;int PY40;int PY41;int PY42;int PY43;int PY44;int PY45;int PY46;
+unsigned char LIMPIEZA[46]={15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15,15};
+int AL1 ; int AL2; int AL3; int AL4; int AL5; int AL6; int AL7; int AL8; int AL9; int AL10; int AL11; int AL12; int AL13; int AL14; int AL15; int AL16; int AL17; int AL18; int AL19; int AL20; int AL21; int AL22; int AL23; int AL24; int AL25; int AL26; int AL27; int AL28; int AL29; int AL30; int AL31; int AL32; int AL33; int AL34; int AL35; int AL36; int AL37; int AL38; int AL39; int AL40; int AL41; int AL42; int AL43; int AL44; int AL45; int AL46;
+int AN1; int AN2; int AN3; int AN4; int AN5; int AN6; int AN7; int AN8; int AN9; int AN10; int AN11; int AN12; int AN13; int AN14; int AN15; int AN16; int AN17; int AN18; int AN19; int AN20; int AN21; int AN22; int AN23; int AN24; int AN25; int AN26;int AN27;int AN28; int AN29; int AN30; int AN31; int AN32; int AN33; int AN34; int AN35; int AN36; int AN37; int AN38; int AN39; int AN40; int AN41; int AN42; int AN43; int AN44; int AN45; int AN46;
+unsigned char ENEMIGO[46]={1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1};
+unsigned char ATAQUE[46]= {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+unsigned char escuadron[10]={0,0,0,0,0,0,0,0,0,0};
+//****************************************************
+int alto_amarillo = 11;
+int ancho_amarillo = 11;
+int alto_bicho = 8;             //dimensiones 
+int ancho_bicho = 12;
+int alto_j = 20;
+int ancho_j= 20;
+
+//****************************************************
+int VA=0;
 int lider1 = 1;
-int lider2 = 0;
-int x1;
-int x2;
-int x3;
-int x4;
-int x5;
-int x6;
-int x7;
-int x8;
-int x9;
-int x10;
-int x11;
-int x12;
-int x13;
-int x14;
-int x15;
-int x16;
-int x17;
-int x18;
-int x19;
-int x20;
-int x21;
-int x22;
-int x23;
-int x24;
-int x25;
-int x26;
-int x27;
-int x28;
-int x29;
-int x30;
-int x31;
-int x32;
-int x33;
-int x34;
-int x35;
-int x36;
-int x37;
-int x38;
-int x39;
-int x40;
-int x41;
-int x42;
-int x43;
-int x44;
-int x45;
-int x46;
-int LIMPIEZA = 15;
-int POSICION = 0;
-int POSICIONX=0;
-int POSICIONY=0;
+
+
 int REMOVE =1;
-int ATAQUE = 0;
 int CONTADOR=0;
 
 //***************************************************************************************************************************************
@@ -160,6 +92,14 @@ void LCD_Print(String text, int x, int y, int fontSize, int color, int backgroun
 
 void LCD_Bitmap(unsigned int x, unsigned int y, unsigned int width, unsigned int height, unsigned char bitmap[]);
 void LCD_Sprite(int x, int y, int width, int height, unsigned char bitmap[],int columns, int index, char flip, char offset);
+void ANIMACIOON(void);
+void TIEMPOS(void);
+void CONTROLES(void);
+//void ATAQUE_ENEMIGO1(int caso,int escuadron, int ATTACK, int LIMP, int enemy1,int enemy2, int enemy3, int enemy4,);
+void ATAQUE_ENEMIGO1(void);
+void ATAQUE_ENEMIGO3(void);
+void MUERTE_ENEMIGO(void);
+void GALAXIAN(void);
 
 //***************************************************************************************************************************************
 // Inicialización
@@ -197,7 +137,7 @@ void setup() {
      
     
   //LCD_Bitmap(unsigned int x, unsigned int y, unsigned int width, unsigned int height, unsigned char bitmap[]);
-  LCD_Bitmap(20, 20, 12, 8, MUERTITO);
+  
  /* 
   for(int x = 0; x <319; x++){
     LCD_Bitmap(x, 52, 16, 16, tile2);
@@ -220,50 +160,39 @@ void setup() {
 //***************************************************************************************************************************************
 void loop() {
 
-  
-    animacion++;
-    int anim1 = (animacion/10)%6;
-    int anim2 = (animacion/20)%6; 
-    
-   
-  if(z==0){
-    
-    z2++;
-    if(z2==6){
-    
-    y=y-1;
-    
-    z2=0;
-    
-    }
-    if(y==-7){
-      z = 1;
-      
-    }
-    
-    }
-  
-  if(z==1){
-    
-    z2++;
-    if(z2==6){
-      
-    y=y+1;
-    
-    z2=0;
-    
-    }
-    if(y==7){
-      z = 0;
-     
-    }
-    
-    }
-  buttonState1 = digitalRead(buttonPin1);
+ escuadron[0] = ENEMIGO[0]+ENEMIGO[1]+ENEMIGO[2]+ENEMIGO[3];
+ escuadron[1] = ENEMIGO[4]+ENEMIGO[5]+ENEMIGO[6]+ENEMIGO[7];
+ escuadron[2] = ENEMIGO[8]+ENEMIGO[9]+ENEMIGO[10]+ENEMIGO[11];
+ escuadron[3] = ENEMIGO[12]+ENEMIGO[13]+ENEMIGO[14]+ENEMIGO[15];
+ escuadron[4] = ENEMIGO[16]+ENEMIGO[17]+ENEMIGO[18]+ENEMIGO[19];
+ escuadron[5] = ENEMIGO[20]+ENEMIGO[21]+ENEMIGO[22]+ENEMIGO[23];
+ escuadron[6] = ENEMIGO[24]+ENEMIGO[25]+ENEMIGO[26]+ENEMIGO[27];
+ escuadron[7] = ENEMIGO[28]+ENEMIGO[29]+ENEMIGO[30]+ENEMIGO[31];
+ escuadron[8] = ENEMIGO[32]+ENEMIGO[33]+ENEMIGO[34]+ENEMIGO[35];
+ escuadron[9] = ENEMIGO[36]+ENEMIGO[37]+ENEMIGO[38]+ENEMIGO[39];
+ 
+ ANIMACIOON();
+ TIEMPOS();
+ CONTROLES();
+ GALAXIAN();
+ ATAQUE_ENEMIGO1();                 
+                                   
+                                    
+ MUERTE_ENEMIGO();
+ 
+
+ 
+  }
+
+
+
+//***********************************************************************************************************************************************************  
+  void CONTROLES(void){
+      buttonState1 = digitalRead(buttonPin1);
 if (buttonState1 == LOW) {     
     // turn LED on:   
     x = x-1;
-    lider1=0;
+    ENEMIGO[0]=0;
     delay(15);
     
     digitalWrite(ledPinBLUE, HIGH); 
@@ -274,8 +203,8 @@ buttonState2 = digitalRead(buttonPin2);
 if (buttonState2 == LOW) {     
     // turn LED on:   
     x = x+1;
-    lider1= 1;
-    ATAQUE = 1;
+    ENEMIGO[0]= 1;
+    ATAQUE[0] = 1;
     delay(15);
     
     digitalWrite(ledPinGREEN, HIGH); 
@@ -284,308 +213,425 @@ if (buttonState2 == LOW) {
 }
   if (buttonState1 == HIGH) {digitalWrite(ledPinBLUE, LOW); }
   if (buttonState2 == HIGH) {digitalWrite(ledPinGREEN, LOW); }
+    return;
+  }
+//**********************************************************************************************************************************************************
+void ANIMACIOON(void){
+   animacion++;
+     anim1 = (animacion/10)%2;
+     anim2 = (animacion/20)%2; 
+    return;
+}
+//**********************************************************************************************************************************************************
+void MUERTE_ENEMIGO(void){
+  if(ENEMIGO[0] == 0 & LIMPIEZA[0] != 0){
+  LIMPIEZA[0]--;
+      LCD_Sprite(P1, 65, 11, 11, REDBUGDEAD,4, anim1, 0, 0);
+      
+  }
+  if(ENEMIGO[0] == 0 & LIMPIEZA[0] == 0){
+    if(REMOVE == 1){
+    FillRect(P1,65,11,11,0x00);
+    REMOVE = 0;
+    }
+    FillRect(y+130, 65, 10, 11, 0x00);
+  }
+  return;
+}
+//***********************************************************************************************************************************************************
+void ATAQUE_ENEMIGO1(void){
+  if(ENEMIGO[0] == 1 & LIMPIEZA[0] == 15 & ATAQUE[0] == 0){
   
-   // LCD_Bitmap(20, 150, 60, 8, BICHOA);
-  // V_line(186+y, 65, 100, 0x421b);
-  //V_line(187+y, 65, 100, 0x421b);
-   // LCD_Sprite(20, 160, 12, 8, PURPLEBUG,6, 0, 0, 0);
-    //LCD_Sprite(40, 160, 12, 8, REDBUG,6, 0, 0, 0);
-    //V_line( x -1, 100, 20, 0x421b);
-    //FillRect(y+128, 65, 3, 10, 0x421b);
-
-if(lider1 == 1 & LIMPIEZA == 15 & ATAQUE == 0){
-  
-    LCD_Bitmap(y+130, 65, 11, 11, YELLOW);
-    POSICION = y+130;
-    POSICIONX = y+130;
-    POSICIONY = 65;
+    LCD_Bitmap(PX1=130+y,PY1=65,alto_amarillo, ancho_amarillo, YELLOW);
+    P1 = PX1;
+     LCD_Sprite(PX3=y+110, PY3=80, ancho_bicho, alto_bicho, REDBUG,2, anim1, 0, 0);     
+    P3 = PX3;
+    
+    LCD_Sprite(PX4=y+130, PY4=80, ancho_bicho, alto_bicho, REDBUG,2, anim2, 0, 0);
+    P4 = PX4;
+       
+    LCD_Sprite(PX5 = y+150, PY5= 80, ancho_bicho, alto_bicho, REDBUG,2, anim1, 0, 0);
+    P5 = PX5;
 }
 
-if(lider1 == 1 & LIMPIEZA == 15 & ATAQUE == 1 ){
+
+if(ENEMIGO[0]==1 & LIMPIEZA[0] == 15 & ATAQUE[0] == 1 ){
 
 if(CONTADOR == 0){
 
-if(POSICIONX!= 40){
-  POSICIONX = POSICIONX - 1;
+if(PX1!= 50){
+  PX1 = PX1 - 1;
 }
-if(POSICIONY!= 30){
-  POSICIONY= POSICIONY-1;
+if(PX3!= 30){
+  PX3 = PX3 - 1;
+}
+if(PX4!= 50){
+  PX4 = PX4 - 1;
+}
+if(PX5!= 70){
+  PX5 = PX5 - 1;
+}
+
+if(PY1!= 30){
+  PY1= PY1-1;
+}
+if(PY3!= 45){
+  PY3= PY3-1;
+}
+if(PY4!= 45){
+  PY4= PY4-1;
+}
+if(PY5!= 45){
+  PY5= PY5-1;
 }
   
-   LCD_Bitmap(POSICIONX, POSICIONY, 11, 11, YELLOW);
-   if(POSICIONX == 40 & POSICIONY == 30){
+    
+    
+   if(PX1 == 50 & PX3==30 & PX4==50 & PX5==70 & PY1 == 30 & PY3==45 & PY4 == 45 & PY5 == 45){
     CONTADOR = 1;
    }
 }
 
 if(CONTADOR == 1){
 
- if(POSICIONX!= 20){
-  POSICIONX = POSICIONX - 1;
+ if(PX1!= 30){
+  PX1 = PX1 - 1;
 }
-if(POSICIONY!= 120){
-  POSICIONY= POSICIONY+1;
+if(PX3!= 10){
+  PX3 = PX3 - 1;
 }
-   LCD_Bitmap(POSICIONX, POSICIONY, 11, 11, YELLOW);
-   if(POSICIONY == 120 & POSICIONX == 20){
+if(PX4!= 30){
+  PX4 = PX4 - 1;
+}
+if(PX5!= 50){
+  PX5 = PX5 - 1;
+}
+if(PY1!= 120){
+  PY1= PY1+1;
+}
+if(PY3!= 135){
+  PY3= PY3+1;
+}
+if(PY4!= 135){
+  PY4= PY4+1;
+}
+if(PY5!= 135){
+  PY5= PY5+1;
+}
+
+   if(PX1 == 30 & PX3==10 & PX4==30 & PX5==50 & PY1 == 120 & PY3==135 & PY4 == 135 & PY5 == 135){
     CONTADOR = 2;
    }
 }
 
 if(CONTADOR == 2){
 
-  if(POSICIONX!= 250){
-  POSICIONX = POSICIONX + 1;
+  if(PX1!= 250){
+  PX1 = PX1 + 1;
 }
-if(POSICIONY!= 160){
-  POSICIONY= POSICIONY+1;
+if(PX3!= 230){
+  PX3 = PX3 + 1;
 }
-   LCD_Bitmap(POSICIONX, POSICIONY, 11, 11, YELLOW);
-   if(POSICIONX == 250 & POSICIONY == 160){
+if(PX4!= 250){
+  PX4 = PX4 + 1;
+}
+if(PX5!= 270){
+  PX5 = PX5 + 1;
+}
+if(PY1!= 160){
+  PY1= PY1+1;
+}
+if(PY3!= 175){
+  PY3= PY3+1;
+}
+if(PY4!= 175){
+  PY4= PY4+1;
+}
+if(PY5!= 175){
+  PY5= PY5+1;
+}
+
+   if(PX1 == 250 & PX3==230 & PX4==250 & PX5==270 & PY1 == 160 & PY3==175 & PY4 == 175 & PY5 == 175){
     CONTADOR = 3;
    }
 }
 
 if(CONTADOR == 3){
-if(POSICIONY != 70){
-  POSICIONY = POSICIONY - 1;
+if(PY1 != 70){
+  PY1 = PY1 - 1;
 }
-if(POSICIONX != 290){
-  POSICIONX = POSICIONX +1;
+if(PY3!= 85){
+  PY3= PY3-1;
 }
-   LCD_Bitmap(POSICIONX, POSICIONY, 11, 11, YELLOW);
-   if(POSICIONY == 70 & POSICIONX == 290){
+if(PY4!= 85){
+  PY4= PY4-1;
+}
+if(PY5!= 85){
+  PY5= PY5-1;
+}
+if(PX1 != 260){
+  PX1 = PX1 +1;
+}
+if(PX3!= 240){
+  PX3 = PX3 + 1;
+}
+if(PX4!= 260){
+  PX4 = PX4 + 1;
+}
+if(PX5!= 280){
+  PX5 = PX5 + 1;
+}
+
+   if(PY1 == 70 & PY3==85 & PY4 == 85 & PY5 == 85 & PX3==240 & PX4==260 & PX5==280 & PX1 == 260){
     CONTADOR = 4;
    }
 }
 
 if(CONTADOR == 4){
 
-if(POSICIONX != POSICION){
-  POSICIONX = POSICIONX-1;
+if(PX1 != P1){
+  PX1 = PX1-1;
 }
-if(POSICIONY != 40){
-  POSICIONY = POSICIONY-1;
+if(PX3 != P3){
+  PX3 = PX3-1;
+}
+if(PX4 != P4){
+  PX4 = PX4-1;
+}
+if(PX5 != P5){
+  PX5 = PX5-1;
+}
+if(PY1 != 40){
+  PY1 = PY1-1;
+}
+if(PY3 != 55){
+  PY3 = PY3-1;
+}
+if(PY4 != 55){
+  PY4 = PY4-1;
+}
+if(PY5 != 55){
+  PY5 = PY5-1;
 }
 
-   LCD_Bitmap(POSICIONX, POSICIONY, 11, 11, YELLOW);
-   if(POSICIONX == POSICION & POSICIONY == 40 ){
+
+   if(PX1 == P1& PX3==P3 & PX4 == P4 & PX5==P5 & PY1 == 40 & PY3 == 55 & PY4 == 55 & PY5 == 55 ){
     CONTADOR = 5;
    }
 }
   if(CONTADOR == 5){
+  
+ 
+  PY1 = PY1 +1;
+  PY3 = PY3 +1;
+  PY4 = PY4 +1;
+  PY5 = PY5 +1;
+  
 
-  POSICIONY = POSICIONY + 1;
-   LCD_Bitmap(y+130, POSICIONY, 11, 11, YELLOW);
-   if(POSICIONY == 65){
+   if(PY1 == 65 & PY3 == 80 & PY4 == 80 & PY5 == 80){
     CONTADOR = 0;
-    ATAQUE = 0;
+    ATAQUE[0] = 0;    // COLOCAR FUERA DE LA FUNCION PARA TODOS
    }
 }
-  
+ LCD_Bitmap(PX1, PY1,alto_amarillo, ancho_amarillo,YELLOW);
+ H_line(PX3,PY1-4, 50, 0x00);
+ H_line(PX3-10,PY1-6, 70, 0x00);
+ H_line(PX3,PY4+10, 50, 0x00);
+ H_line(PX3-10,PY4+18, 70, 0x00);
+ V_line(PX3-5, PY3-17, 25, 0x00);
+ V_line(PX3-8, PY3-25, 40, 0x00);
+ V_line(PX5+15,PY5-17, 25, 0x00);
+ V_line(PX5+17,PY5-25, 40, 0x00);
+ V_line(PX3+12,PY1, 25, 0x00);
+ V_line(PX1+12,PY1, 25, 0x00);
+
+ 
+  //V_line(PX1-2,PY1, 25, 0x00);
+  // V_line(PX5-2,PY1, 25, 0x00);
+ LCD_Sprite(PX3, PY3, ancho_bicho, alto_bicho, REDBUG,2, 0, 0, 0);
+ LCD_Sprite(PX4, PY4, ancho_bicho, alto_bicho, REDBUG,2, 0, 0, 0);
+ LCD_Sprite(PX5, PY5, ancho_bicho, alto_bicho, REDBUG,2, 0, 0, 0); 
 }
-   
-  
-
-if(lider1 == 0 & LIMPIEZA != 0){
-  LIMPIEZA--;
-      LCD_Sprite(POSICION, 65, 11, 11, REDBUGDEAD,4, anim1, 0, 0);
-      
-  }
-  if(lider1 == 0 & LIMPIEZA == 0){
-    if(REMOVE == 1){
-    FillRect(POSICION,65,11,11,0x00);
-    REMOVE = 0;
+  return;
+}
+//***********************************************************************************************************************************************************
+void TIEMPOS(void){
+     
+  if(z==0){
+    z2++;
+    if(z2==6){ 
+    y=y-1;
+    z2=0;  
     }
-    FillRect(y+130, 65, 10, 11, 0x00);
-  }
-    
-    
-    
+    if(y==-7){
+      z = 1;    
+    }    
+    }
+  
+  if(z==1){
+    z2++;
+    if(z2==6){     
+    y=y+1;   
+    z2=0;  
+    }
+    if(y==7){
+      z = 0;    
+    }   
+    }
+  return;
+}
+//*****************************************************************************************************************************************************
+void GALAXIAN(void){
+   
 
-    
-    LCD_Bitmap(y+190, 65, 11, 11, YELLOW);
+
+    LCD_Bitmap(PX2=y+190, PY2=65, ancho_amarillo, alto_amarillo, YELLOW);
   //  LCD_Bitmap(20, 20, 12, 8, MUERTITO);
  
-    LCD_Sprite(y+110, 80, 12, 8, REDBUG,6, anim1, 0, 0);     
-   // LCD_Bitmap(20, 20, 12, 8, MUERTITO); 
+   
+   
     
-    LCD_Sprite(y+130, 80, 12, 8, REDBUG,6, anim2, 0, 0);
-   // LCD_Bitmap(20, 20, 12, 8, MUERTITO);
-       
-    LCD_Sprite(y+150, 80, 12, 8, REDBUG,6, anim1, 0, 0);
-    //LCD_Bitmap(20, 20, 12, 8, MUERTITO);
-    
-    LCD_Sprite(y+170, 80, 12, 8, REDBUG,6, anim2, 0, 0);
+    LCD_Sprite(PX6=y+170, PY6=80, ancho_bicho, alto_bicho, REDBUG,2, anim2, 0, 0);
 //LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+190, 80, 12, 8, REDBUG,6, anim1, 0, 0);
+    LCD_Sprite(PX7=y+190, PY7=80, ancho_bicho, alto_bicho, REDBUG,2, anim1, 0, 0);
    // LCD_Bitmap(20, 20, 12, 8, MUERTITO);
    
-    LCD_Sprite(y+210, 80, 12, 8, REDBUG,6, anim2, 0, 0);
+    LCD_Sprite(PX8=y+210, PY8=80, ancho_bicho, alto_bicho, REDBUG,2, anim2, 0, 0);
    // LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+90, 90, 12, 8, PURPLEBUG,6, anim1, 0, 0);
+    LCD_Sprite(PX9=y+90,PY9=90, ancho_bicho, alto_bicho, PURPLEBUG,2, anim1, 0, 0);
     //LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+110, 90, 12, 8, PURPLEBUG,6, anim2, 0, 0);
+    LCD_Sprite(PX10=y+110, PY10=90, ancho_bicho, alto_bicho, PURPLEBUG,2, anim2, 0, 0);
    // LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+130, 90, 12, 8, PURPLEBUG,6, anim1, 0, 0);
+    LCD_Sprite(PX11=y+130, PY11=90, ancho_bicho, alto_bicho, PURPLEBUG,2, anim1, 0, 0);
    // LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+150, 90, 12, 8, PURPLEBUG,6, anim2, 0, 0);
+    LCD_Sprite(PX12=y+150, PY12=90, ancho_bicho, alto_bicho, PURPLEBUG,2, anim2, 0, 0);
     //LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+170, 90, 12, 8, PURPLEBUG,6, anim1, 0, 0);
+    LCD_Sprite(PX13=y+170, PY13=90, ancho_bicho, alto_bicho, PURPLEBUG,2, anim1, 0, 0);
    // LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+190, 90, 12, 8, PURPLEBUG,6, anim2, 0, 0);
+    LCD_Sprite(PX14=y+190, PY14=90, ancho_bicho, alto_bicho, PURPLEBUG,2, anim2, 0, 0);
    // LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+210, 90, 12, 8, PURPLEBUG,6, anim1, 0, 0);
+    LCD_Sprite(PX15=y+210, PY15=90, ancho_bicho, alto_bicho, PURPLEBUG,2, anim1, 0, 0);
     //LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+230, 90, 12, 8, PURPLEBUG,6, anim2, 0, 0);
+    LCD_Sprite(PX16=y+230, PY16=90, ancho_bicho, alto_bicho, PURPLEBUG,2, anim2, 0, 0);
     //LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+70, 100, 12, 8, BICHOA,4, anim1, 0, 0);
+    LCD_Sprite(PX17=y+70, PY17=100, ancho_bicho, alto_bicho, BICHOA,2, anim1, 0, 0);
     //LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+90, 100, 12, 8, BICHOA,4, anim2, 0, 0);
+    LCD_Sprite(PX18=y+90, PY18=100, ancho_bicho, alto_bicho, BICHOA,2, anim2, 0, 0);
     //LCD_Bitmap(20, 20, 12, 8, MUERTITO);
 
-    LCD_Sprite(y+110, 100, 12, 8, BICHOA,4, anim1, 0, 0);
+    LCD_Sprite(PX19=y+110, PY19=100, ancho_bicho, alto_bicho, BICHOA,2, anim1, 0, 0);
    // LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+130, 100, 12, 8, BICHOA,4,anim2, 0, 0);
+    LCD_Sprite(PX20=y+130, PY20=100, ancho_bicho, alto_bicho, BICHOA,2,anim2, 0, 0);
    // LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+150, 100, 12, 8, BICHOA,4, anim1, 0, 0);
+    LCD_Sprite(PX21=y+150, PY21=100,  ancho_bicho, alto_bicho, BICHOA,2, anim1, 0, 0);
     //LCD_Bitmap(20, 20, 12, 8, MUERTITO);
    
-    LCD_Sprite(y+170, 100, 12, 8, BICHOA,4, anim2, 0, 0);
+    LCD_Sprite(PX22=y+170, PY22=100,  ancho_bicho, alto_bicho, BICHOA,2, anim2, 0, 0);
     //LCD_Bitmap(20, 20, 12, 8, MUERTITO);
    
-    LCD_Sprite(y+190, 100, 12, 8, BICHOA,4, anim1, 0, 0);
+    LCD_Sprite(PX23=y+190, PY23=100,  ancho_bicho, alto_bicho, BICHOA,2, anim1, 0, 0);
    // LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+210, 100, 12, 8, BICHOA,4, anim2, 0, 0);
+    LCD_Sprite(PX24=y+210, PY24=100,  ancho_bicho, alto_bicho, BICHOA,2, anim2, 0, 0);
     //LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+230, 100, 12, 8, BICHOA,4, anim1, 0, 0);
+    LCD_Sprite(PX25=y+230, PY25=100, ancho_bicho, alto_bicho, BICHOA,2, anim1, 0, 0);
     //LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+250, 100, 12, 8, BICHOA,4, anim2, 0, 0);
+    LCD_Sprite(PX26=y+250, PY26=100,  ancho_bicho, alto_bicho, BICHOA,2, anim2, 0, 0);
     //LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+70, 110, 12, 8, BICHOA,4, anim1, 0, 0);
+    LCD_Sprite(PX27=y+70, PY27=110, ancho_bicho, alto_bicho, BICHOA,2, anim1, 0, 0);
    // LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+90, 110, 12, 8, BICHOA,4, anim2, 0, 0);
+    LCD_Sprite(PX28=y+90, PY28=110,  ancho_bicho, alto_bicho, BICHOA,2, anim2, 0, 0);
     //LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+110, 110, 12, 8, BICHOA,4, anim1, 0, 0);
+    LCD_Sprite(PX29=y+110, PY29=110,  ancho_bicho, alto_bicho, BICHOA,2, anim1, 0, 0);
     //LCD_Bitmap(20, 20, 12, 8, MUERTITO);
    
-    LCD_Sprite(y+130, 110, 12, 8, BICHOA,4, anim2, 0, 0);
+    LCD_Sprite(PX30=y+130, PY30=110,  ancho_bicho, alto_bicho, BICHOA,2, anim2, 0, 0);
    // LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+150, 110, 12, 8, BICHOA,4, anim1, 0, 0);
+    LCD_Sprite(PX31=y+150, PY31=110,  ancho_bicho, alto_bicho, BICHOA,2, anim1, 0, 0);
     //LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+170, 110, 12, 8, BICHOA,4, anim2, 0, 0);
+    LCD_Sprite(PX32=y+170, PY32=110,  ancho_bicho, alto_bicho, BICHOA,2, anim2, 0, 0);
     //LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+190, 110, 12, 8, BICHOA,4, anim1, 0, 0);
+    LCD_Sprite(PX33=y+190, PY33=110,  ancho_bicho, alto_bicho, BICHOA,2, anim1, 0, 0);
    // LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+210, 110, 12, 8, BICHOA,4, anim2, 0, 0);
+    LCD_Sprite(PX34=y+210, PY34=110,  ancho_bicho, alto_bicho, BICHOA,2, anim2, 0, 0);
     //LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+230, 110, 12, 8, BICHOA,4, anim1, 0, 0);
+    LCD_Sprite(PX35=y+230, PY35=110,  ancho_bicho, alto_bicho, BICHOA,2, anim1, 0, 0);
    // LCD_Bitmap(20, 20, 12, 8, MUERTITO);
    
-    LCD_Sprite(y+250, 110, 12, 8, BICHOA,4, anim2, 0, 0);
+    LCD_Sprite(PX36=y+250, PY36=110,  ancho_bicho, alto_bicho, BICHOA,2, anim2, 0, 0);
     //LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+70, 120, 12, 8, BICHOA,4, anim1, 0, 0);
+    LCD_Sprite(PX37=y+70, PY37=120,  ancho_bicho, alto_bicho, BICHOA,2, anim1, 0, 0);
    // LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+90, 120, 12, 8, BICHOA,4, anim2, 0, 0);
+    LCD_Sprite(PX38=y+90, PY38=120,  ancho_bicho, alto_bicho, BICHOA,2, anim2, 0, 0);
    // LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+110, 120, 12, 8, BICHOA,4, anim1, 0, 0);
+    LCD_Sprite(PX39=y+110, PY39=120,  ancho_bicho, alto_bicho, BICHOA,2, anim1, 0, 0);
    // LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+130, 120, 12, 8, BICHOA,4, anim2, 0, 0);
+    LCD_Sprite(PX40=y+130, PY40=120,  ancho_bicho, alto_bicho, BICHOA,2, anim2, 0, 0);
    // LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+150, 120, 12, 8, BICHOA,4, anim1, 0, 0);
+    LCD_Sprite(PX41=y+150, PY41=120,  ancho_bicho, alto_bicho, BICHOA,2, anim1, 0, 0);
    // LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+170, 120, 12, 8, BICHOA,4, anim2, 0, 0);
+    LCD_Sprite(PX42=y+170, PY42=120,  ancho_bicho, alto_bicho, BICHOA,2, anim2, 0, 0);
     //LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+190, 120, 12, 8, BICHOA,4, anim1, 0, 0);
+    LCD_Sprite(PX43=y+190, PY43=120,  ancho_bicho, alto_bicho, BICHOA,2, anim1, 0, 0);
    // LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+210, 120, 12, 8, BICHOA,4, anim2, 0, 0);
+    LCD_Sprite(PX44=y+210, PY44=120,  ancho_bicho, alto_bicho, BICHOA,2, anim2, 0, 0);
    // LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+230, 120, 12, 8, BICHOA,4, anim1, 0, 0);
+    LCD_Sprite(PX45=y+230, PY45=120,  ancho_bicho, alto_bicho, BICHOA,2, anim1, 0, 0);
    // LCD_Bitmap(20, 20, 12, 8, MUERTITO);
     
-    LCD_Sprite(y+250, 120, 12, 8, BICHOA,4, anim2, 0, 0);
+    LCD_Sprite(PX46=y+250, PY46=120,  ancho_bicho, alto_bicho, BICHOA,2, anim2, 0, 0);
     //LCD_Bitmap(y+250, 120, 12, 8, MUERTITO);
    
      
-     LCD_Bitmap(x, 200, 20, 20, PLAYER1);
+     LCD_Bitmap(x, 200, ancho_j, alto_j, PLAYER1);
     // LCD_Bitmap(20, 20, 12, 8, MUERTITO);
-     LCD_Bitmap(185, 200, 20, 20, PLAYER2);
+     LCD_Bitmap(185, 200, ancho_j,alto_j, PLAYER2);
    //  LCD_Bitmap(20, 20, 12, 8, MUERTITO);
      
-    /*
-    //LCD_Bitmap(x, 100, 32, 32, prueba);
-    
-    int anim = (x/11)%8;
-    
+   
+  return;
+}
+//***********************************************************************************************************************************************************
 
-    int anim3 = (x/11)%4;
-    
-    LCD_Sprite(x, 20, 16, 32, mario,8, anim,1, 0);
-    V_line( x -1, 20, 32, 0x421b);
- 
-    //LCD_Sprite(x,100,32,32,bowser,4,anim3,0,1);
-    //V_line( x -1, 100, 32, 0x421b);
- 
- 
-    LCD_Sprite(x, 140, 16, 16, enemy,2, anim2,1, 0);
-    V_line( x -1, 140, 16, 0x421b);
-  
-    LCD_Sprite(x, 175, 16, 32, luigi,8, anim,1, 0);
-    V_line( x -1, 175, 32, 0x421b);
-  }
-  for(int x = 320-32; x >0; x--){
-    delay(5);
-    int anim = (x/11)%8;
-    int anim2 = (x/11)%2;
-    
-    LCD_Sprite(x,100,16,24,planta,2,anim2,0,0);
-    V_line( x + 16, 100, 24, 0x421b);
-    
-    //LCD_Bitmap(x, 100, 32, 32, prueba);
-    
-    //LCD_Sprite(x, 140, 16, 16, enemy,2, anim2,0, 0);
-    //V_line( x + 16, 140, 16, 0x421b);
-    
-    //LCD_Sprite(x, 175, 16, 32, luigi,8, anim,0, 0);
-    //V_line( x + 16, 175, 32, 0x421b);
 
-    //LCD_Sprite(x, 20, 16, 32, mario,8, anim,0, 0);
-    //V_line( x + 16, 20, 32, 0x421b);
-    */
-  } 
+
+
+
+
+
+   
 
 
 //***************************************************************************************************************************************
